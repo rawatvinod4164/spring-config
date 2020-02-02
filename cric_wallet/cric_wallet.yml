@@ -1,0 +1,38 @@
+cric:
+  wallet:
+    cache:
+      ttl: 100
+    kafka:
+      topic: wallet_event
+    http:
+      logging:
+        correlationId: 'X-CorrelationId'
+spring:
+  profiles: development
+  redis:
+    cluster:
+      nodes: 172.24.201.110:6379
+      max-redirects: 5
+
+  kafka:
+    bootstrap-servers: 172.24.91.99:9092
+#    bootstrap-servers: localhost:9092
+    producer:
+      acks: all
+      #      compression-type: snappy
+      batch-size: 32768 #32*1024
+
+    consumer:
+      enable-auto-commit: true
+      group-id: wallet_update
+      auto-offset-reset: latest
+  data:
+    mongodb:
+#      uri: mongodb://localhost:27017/cricplaydb
+      uri: mongodb://STgMngoCricPlDB:StGmN1g0Cr1cPldB@172.24.98.28:27017/cricplaydb
+logging:
+  file:
+    path: logs
+    name: ${logging.file.path}/cric_wallet_log
+  pattern:
+    console: '%d{dd-MM HH:mm:ss.SSS} %-5level [%thread] %logger{80} %method:%line - %msg%n'
