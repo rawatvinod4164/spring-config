@@ -6,18 +6,17 @@ cric:
       topic: wallet_event
     http:
       logging:
-        correlationId: 'x-CorrelationId'
+        correlationId: 'X-CorrelationId'
 spring:
   profiles: development
   redis:
     cluster:
-      nodes: localhost:30001
+      nodes: 172.24.201.110:6379
       max-redirects: 5
-#      nodes: 172.24.201.110:6379
 
   kafka:
-#    bootstrap-servers: 172.24.91.99:9092
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 172.24.91.99:9092
+#    bootstrap-servers: localhost:9092
     producer:
       acks: all
       #      compression-type: snappy
@@ -29,8 +28,8 @@ spring:
       auto-offset-reset: latest
   data:
     mongodb:
-      uri: mongodb://localhost:27017/cricplaydb
-#      uri: mongodb://STgMngoCricPlDB:StGmN1g0Cr1cPldB@172.24.98.28:27017/cricplaydb
+#      uri: mongodb://localhost:27017/cricplaydb
+      uri: mongodb://STgMngoCricPlDB:StGmN1g0Cr1cPldB@172.24.98.28:27017/cricplaydb
 logging:
   file:
     path: logs
