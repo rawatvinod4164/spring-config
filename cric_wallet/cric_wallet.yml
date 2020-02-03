@@ -8,7 +8,6 @@ cric:
       logging:
         correlationId: 'X-CorrelationId'
 spring:
-  profiles: development
   redis:
     cluster:
       nodes: 172.24.201.110:6379
